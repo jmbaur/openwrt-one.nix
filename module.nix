@@ -15,10 +15,7 @@ let
     toHexString
     ;
 
-  flashSize = 256 * 1024 * 1024;
   ubootEnvSize = 124 * 1024; # CONFIG_ENV_SIZE
-  firmwareSize = builtins.ceil (5.5 * 1024 * 1024); # 0x580000
-  mixosSize = flashSize - (2 * ubootEnvSize) - firmwareSize;
 
   cfg = config.hardware.openwrt-one;
 in
@@ -91,7 +88,7 @@ in
         mtdutils,
         formats,
       }:
-      runCommand "bpi-r3-ubi-image"
+      runCommand "openwrt-one-ubi-image"
         {
           env = {
             ubinizeConfig = (formats.ini { }).generate "ubinize.ini" (
@@ -118,7 +115,7 @@ in
                       };
                     }
                     {
-                      name = "ubootenvred";
+                      name = "ubootenv2";
                       value = {
                         mode = "ubi";
                         vol_type = "dynamic";
@@ -126,12 +123,12 @@ in
                       };
                     }
                     {
-                      name = "mixos";
+                      name = "state";
                       value = {
                         mode = "ubi";
                         vol_type = "dynamic";
-                        vol_size = "0x${toHexString mixosSize}";
-                        image = config.system.build.fitImage;
+                        vol_size = "100MiB";
+                        vol_flags = "autoresize";
                       };
                     }
                   ]
@@ -143,7 +140,7 @@ in
         }
         ''
           mkdir -p $out
-          ubinize -vv -o $out/ubi.img -m 2048 -p 128KiB $ubinizeConfig
+          ubinize --verbose --output=$out/ubi.img --min-io-size=2048 --peb-size=128KiB $ubinizeConfig
         ''
     ) { };
   };
