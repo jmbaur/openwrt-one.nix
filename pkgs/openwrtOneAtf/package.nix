@@ -28,7 +28,6 @@ buildArmTrustedFirmware rec {
   extraMakeFlags = [
     "BL33=${openwrtOneUBoot}/u-boot.bin"
     "BOOT_DEVICE=${bootDevice}" # defines where the FIP image lives
-    "NAND_TYPE=spim:2k+128"
     "DRAM_USE_DDR4=1"
     "USE_MKIMAGE=1"
     "bl2"
