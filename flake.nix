@@ -42,6 +42,7 @@
             hardware.openwrt-one.enable = true;
 
             bin = [
+              pkgs.hostapd
               pkgs.iw
               pkgs.kexec-tools
               pkgs.mtdutilsMinimal
