@@ -1,12 +1,3 @@
-From b0b1984760cc571a8534bc10018a13ae073df6f5 Mon Sep 17 00:00:00 2001
-From: Jared Baur <jaredbaur@fastmail.com>
-Date: Thu, 28 Aug 2025 20:22:27 +0100
-Subject: [PATCH 2/2] Complete openwrt-one devicetree
-
----
- .../boot/dts/mediatek/mt7981b-openwrt-one.dts | 460 +++++++++++++++++-
- 1 file changed, 457 insertions(+), 3 deletions(-)
-
 diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
 index 4f6cbb491287..18a569daf8f0 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
@@ -484,6 +475,3 @@ index 4f6cbb491287..18a569daf8f0 100644
 +&sgmiisys0 {
 +	/delete-node/ mediatek,pnswap;
  };
--- 
-2.50.1
-

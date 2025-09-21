@@ -27,14 +27,14 @@ in
   config = mkIf cfg.enable {
     nixpkgs.hostPlatform = mkDefault "aarch64-linux";
 
-    # TODO(jared): make smaller
     boot.kernel = pkgs.openwrtOneLinux;
 
     boot.requiredKernelConfig = [ "FW_LOADER_COMPRESS_XZ" ];
     boot.firmware = [
-      (pkgs.runCommand "mediatek-firmware" { directory = "mediatek"; } ''
-        mkdir -p $out/lib/firmware/$directory
-        cp -r ${pkgs.linux-firmware}/lib/firmware/$directory/* $out/lib/firmware/$directory
+      (pkgs.runCommand "mediatek-and-wireless-firmware" { } ''
+        mkdir -p $out/lib/firmware/mediatek
+        cp -r ${pkgs.linux-firmware}/lib/firmware/mediatek/* $out/lib/firmware/mediatek
+        cp ${pkgs.wireless-regdb}/lib/firmware/regulatory.db* $out/lib/firmware
 
         # Find and fix broken symlinks
         while read -r symlink; do

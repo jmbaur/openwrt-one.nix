@@ -46,6 +46,8 @@
               pkgs.iw
               pkgs.kexec-tools
               pkgs.mtdutilsMinimal
+              pkgs.nftables
+              pkgs.traceroute
             ];
 
             init.shell = {
