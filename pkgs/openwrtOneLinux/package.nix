@@ -55,10 +55,6 @@ linuxKernel.manualConfig {
         "435-drivers-mtd-spinand-Add-calibration-support-for-spin.patch"
         "436-drivers-mtd-spi-nor-Add-calibration-support-for-spi-.patch"
         # "450-nvmem-add-layout-for-Adtran-devices.patch"
-        "500-gsw-rtl8367s-mt7622-support.patch"
-        "601-PCI-mediatek-Assert-PERST-for-100ms-for-power-and-cl.patch"
-        "610-pcie-mediatek-fix-clearing-interrupt-status.patch"
-        "611-pcie-mediatek-gen3-PERST-for-100ms.patch"
         # NOTE: 700 and 701 replaced with ./25ge.patch
         # "700-net-phy-mediatek-Add-2.5Gphy-firmware-dt-bindings-an.patch"
         # "701-net-phy-mediatek-add-driver-for-built-in-2.5G-ethern.patch"
