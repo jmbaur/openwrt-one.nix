@@ -1,0 +1,113 @@
+From 38e2a413c46b9285338c4d7e0b054ac02fcd3568 Mon Sep 17 00:00:00 2001
+From: Sjoerd Simons <sjoerd@collabora.com>
+Date: Thu, 16 Oct 2025 12:08:48 +0200
+Subject: [PATCH 12/15] arm64: dts: mediatek: mt7981b-openwrt-one: Enable
+ Ethernet
+
+Enable the Ethernet subsystem on OpenWrt One board with dual-MAC
+configuration:
+- GMAC0: Connected to external Airoha EN8811H 2.5GbE PHY via SGMII
+  (2500base-x mode) for WAN connectivity with LED indicators
+- GMAC1: Connected to internal MT7981 1GbE PHY (GMII mode) for LAN
+
+Ethernet aliases are defined to provide consistent network interface
+naming (ethernet0 = LAN, ethernet1 = WAN).
+
+Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+---
+ .../boot/dts/mediatek/mt7981b-openwrt-one.dts | 58 +++++++++++++++++++
+ 1 file changed, 58 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+index 1597d54dc208..c7fe4f57c48b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+@@ -3,6 +3,8 @@
+ /dts-v1/;
+ 
+ #include "mt7981b.dtsi"
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/leds/common.h>
+ #include "dt-bindings/pinctrl/mt65xx.h"
+ 
+ / {
+@@ -10,6 +12,8 @@ / {
+ 	model = "OpenWrt One";
+ 
+ 	aliases {
++		ethernet0 = &gmac1;
++		ethernet1 = &gmac0;
+ 		serial0 = &uart0;
+ 	};
+ 
+@@ -37,6 +41,56 @@ reg_5v: regulator-5v {
+ 	};
+ };
+ 
++&eth {
++	status = "okay";
++
++	gmac0: mac@0 {
++		compatible = "mediatek,eth-mac";
++		reg = <0>;
++		nvmem-cells = <&macaddr_factory_24 0>;
++		nvmem-cell-names = "mac-address";
++		phy-mode = "2500base-x";
++		phy-handle = <&phy15>;
++	};
++
++	gmac1: mac@1 {
++		compatible = "mediatek,eth-mac";
++		reg = <1>;
++		phy-mode = "gmii";
++		phy-handle = <&int_gbe_phy>;
++	};
++};
++
++&mdio_bus {
++	phy15: ethernet-phy@f {
++		compatible = "ethernet-phy-id03a2.a411";
++		reg = <0xf>;
++		interrupt-parent = <&pio>;
++		interrupts = <38 IRQ_TYPE_EDGE_FALLING>;
++		reset-gpios = <&pio 39 GPIO_ACTIVE_LOW>;
++		reset-assert-us = <10000>;
++		reset-deassert-us = <20000>;
++		airoha,pnswap-rx;
++
++		leds {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			led@0 {
++				reg = <0>;
++				function = LED_FUNCTION_WAN;
++				color = <LED_COLOR_ID_AMBER>;
++			};
++
++			led@1 {
++				reg = <1>;
++				function = LED_FUNCTION_WAN;
++				color = <LED_COLOR_ID_GREEN>;
++			};
++		};
++	};
++};
++
+ &pcie {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie_pins>;
+@@ -141,6 +195,10 @@ partition@180000 {
+ 	};
+ };
+ 
++&sgmiisys0 {
++	mediatek,pnswap;
++};
++
+ &uart0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0_pins>;
+-- 
+2.51.0
+

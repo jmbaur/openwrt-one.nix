@@ -1,0 +1,28 @@
+From 3181417a16c7c6ac39690070d67f0b44fe33b937 Mon Sep 17 00:00:00 2001
+From: Sjoerd Simons <sjoerd@collabora.com>
+Date: Thu, 16 Oct 2025 12:08:40 +0200
+Subject: [PATCH 04/15] dt-bindings: mfd: syscon: Add mt7981-topmisc
+
+This hardware block amongst other things includes a multiplexer for a
+high-speed Combo-Phy. This binding allows exposing the multiplexer
+
+Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+---
+ Documentation/devicetree/bindings/mfd/syscon.yaml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
+index 657c38175fba..51511078c4c3 100644
+--- a/Documentation/devicetree/bindings/mfd/syscon.yaml
++++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
+@@ -193,6 +193,7 @@ properties:
+           - mediatek,mt2701-pctl-a-syscfg
+           - mediatek,mt2712-pctl-a-syscfg
+           - mediatek,mt6397-pctl-pmic-syscfg
++          - mediatek,mt7981-topmisc
+           - mediatek,mt7988-topmisc
+           - mediatek,mt8135-pctl-a-syscfg
+           - mediatek,mt8135-pctl-b-syscfg
+-- 
+2.51.0
+

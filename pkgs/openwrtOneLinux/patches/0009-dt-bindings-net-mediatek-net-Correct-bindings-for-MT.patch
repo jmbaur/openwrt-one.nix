@@ -1,0 +1,75 @@
+From 2fb1ee085b654a5ac8ea9849e5dac9f188679f9f Mon Sep 17 00:00:00 2001
+From: Sjoerd Simons <sjoerd@collabora.com>
+Date: Thu, 16 Oct 2025 12:08:45 +0200
+Subject: [PATCH 09/15] dt-bindings: net: mediatek,net: Correct bindings for
+ MT7981
+
+Different SoCs have different numbers of Wireless Ethernet
+Dispatch (WED) units:
+- MT7981: Has 1 WED unit
+- MT7986: Has 2 WED units
+- MT7988: Has 2 WED units
+
+Update the binding to reflect these hardware differences. The MT7981
+also uses infracfg for PHY switching, so allow that property.
+
+Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+---
+ .../devicetree/bindings/net/mediatek,net.yaml    | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+index b45f67f92e80..453e6bb34094 100644
+--- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
++++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
+@@ -112,7 +112,7 @@ properties:
+ 
+   mediatek,wed:
+     $ref: /schemas/types.yaml#/definitions/phandle-array
+-    minItems: 2
++    minItems: 1
+     maxItems: 2
+     items:
+       maxItems: 1
+@@ -338,12 +338,14 @@ allOf:
+             - const: netsys0
+             - const: netsys1
+ 
+-        mediatek,infracfg: false
+-
+         mediatek,sgmiisys:
+           minItems: 2
+           maxItems: 2
+ 
++        mediatek,wed:
++          minItems: 1
++          maxItems: 1
++
+   - if:
+       properties:
+         compatible:
+@@ -385,6 +387,10 @@ allOf:
+           minItems: 2
+           maxItems: 2
+ 
++        mediatek,wed:
++          minItems: 2
++          maxItems: 2
++
+   - if:
+       properties:
+         compatible:
+@@ -429,6 +435,10 @@ allOf:
+             - const: xgp2
+             - const: xgp3
+ 
++        mediatek,wed:
++          minItems: 2
++          maxItems: 2
++
+ patternProperties:
+   "^mac@[0-2]$":
+     type: object
+-- 
+2.51.0
+

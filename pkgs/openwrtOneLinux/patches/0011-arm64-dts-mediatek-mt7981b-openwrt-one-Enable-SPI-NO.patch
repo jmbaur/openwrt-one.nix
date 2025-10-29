@@ -1,0 +1,130 @@
+From b12421817c6fa82f87807122c74b892170951b63 Mon Sep 17 00:00:00 2001
+From: Sjoerd Simons <sjoerd@collabora.com>
+Date: Thu, 16 Oct 2025 12:08:47 +0200
+Subject: [PATCH 11/15] arm64: dts: mediatek: mt7981b-openwrt-one: Enable SPI
+ NOR
+
+The openwrt one has a SPI NOR flash which from factory is used for:
+* Recovery system
+* WiFi eeprom data
+* ethernet Mac addresses
+
+Describe this following the same partitions as the openwrt configuration
+uses.
+
+Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+---
+ .../boot/dts/mediatek/mt7981b-openwrt-one.dts | 83 +++++++++++++++++++
+ 1 file changed, 83 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+index fd3773888200..1597d54dc208 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
++++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
+@@ -3,6 +3,7 @@
+ /dts-v1/;
+ 
+ #include "mt7981b.dtsi"
++#include "dt-bindings/pinctrl/mt65xx.h"
+ 
+ / {
+ 	compatible = "openwrt,one", "mediatek,mt7981b";
+@@ -50,6 +51,25 @@ mux {
+ 		};
+ 	};
+ 
++	spi2_flash_pins: spi2-pins {
++		mux {
++			function = "spi";
++			groups = "spi2";
++		};
++
++		conf-pu {
++			bias-pull-up = <MTK_PUPD_SET_R1R0_11>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			pins = "SPI2_CS", "SPI2_WP";
++		};
++
++		conf-pd {
++			bias-pull-down = <MTK_PUPD_SET_R1R0_11>;
++			drive-strength = <MTK_DRIVE_8mA>;
++			pins = "SPI2_CLK", "SPI2_MOSI", "SPI2_MISO";
++		};
++	};
++
+ 	uart0_pins: uart0-pins {
+ 		mux {
+ 			function = "uart";
+@@ -58,6 +78,69 @@ mux {
+ 	};
+ };
+ 
++&spi2 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&spi2_flash_pins>;
++	status = "okay";
++
++	flash@0 {
++		compatible = "jedec,spi-nor";
++		reg = <0>;
++		spi-max-frequency = <40000000>;
++		#address-cells = <1>;
++		#size-cells = <1>;
++
++		partitions {
++			compatible = "fixed-partitions";
++			#address-cells = <1>;
++			#size-cells = <1>;
++
++			partition@0 {
++				reg = <0x00000 0x40000>;
++				label = "bl2-nor";
++			};
++
++			partition@40000 {
++				reg = <0x40000 0xc0000>;
++				label = "factory";
++				read-only;
++
++				nvmem-layout {
++					compatible = "fixed-layout";
++					#address-cells = <1>;
++					#size-cells = <1>;
++
++					eeprom_factory_0: eeprom@0 {
++						reg = <0x0 0x1000>;
++					};
++
++					macaddr_factory_4: macaddr@4 {
++						reg = <0x4 0x6>;
++						compatible = "mac-base";
++						#nvmem-cell-cells = <1>;
++					};
++
++					macaddr_factory_24: macaddr@24 {
++						reg = <0x24 0x6>;
++						compatible = "mac-base";
++						#nvmem-cell-cells = <1>;
++					};
++				};
++			};
++
++			partition@100000 {
++				reg = <0x100000 0x80000>;
++				label = "fip-nor";
++			};
++
++			partition@180000 {
++				reg = <0x180000 0xc80000>;
++				label = "recovery";
++			};
++		};
++	};
++};
++
+ &uart0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0_pins>;
+-- 
+2.51.0
+

@@ -1,0 +1,41 @@
+From f0ec8983f98e947178b37d4e6a34c653188b903b Mon Sep 17 00:00:00 2001
+From: Sjoerd Simons <sjoerd@collabora.com>
+Date: Thu, 16 Oct 2025 12:08:49 +0200
+Subject: [PATCH 13/15] arm64: dts: mediatek: mt7981b: Add wifi memory region
+
+Add required memory region for the builtin wifi block. Disable the block
+by default as it won't function properly without at least pin muxing.
+
+Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt7981b.dtsi | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+index 77d5bf0c27b1..05edf229f39e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+@@ -68,6 +68,11 @@ secmon_reserved: secmon@43000000 {
+ 			no-map;
+ 		};
+ 
++		wmcpu_emi: wmcpu-reserved@47c80000 {
++			reg = <0 0x47c80000 0 0x100000>;
++			no-map;
++		};
++
+ 		wo_emi0: wo-emi@47d80000 {
+ 			reg = <0 0x47d80000 0 0x40000>;
+ 			no-map;
+@@ -489,6 +494,8 @@ wifi: wifi@18000000 {
+ 			clock-names = "mcu", "ap2conn";
+ 			resets = <&watchdog MT7986_TOPRGU_CONSYS_SW_RST>;
+ 			reset-names = "consys";
++			memory-region = <&wmcpu_emi>;
++			status = "disabled";
+ 		};
+ 	};
+ 
+-- 
+2.51.0
+

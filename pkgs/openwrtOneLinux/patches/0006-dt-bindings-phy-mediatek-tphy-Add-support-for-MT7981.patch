@@ -1,0 +1,28 @@
+From ca8aa79eb3e2bca3739c318710abcdfcf24db50d Mon Sep 17 00:00:00 2001
+From: Sjoerd Simons <sjoerd@collabora.com>
+Date: Thu, 16 Oct 2025 12:08:42 +0200
+Subject: [PATCH 06/15] dt-bindings: phy: mediatek,tphy: Add support for MT7981
+
+Add a compatible string for Filogic 820, this chip integrates a MediaTek
+generic T-PHY version 2
+
+Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
+---
+ Documentation/devicetree/bindings/phy/mediatek,tphy.yaml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+index b2218c151939..ff5c77ef1176 100644
+--- a/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
++++ b/Documentation/devicetree/bindings/phy/mediatek,tphy.yaml
+@@ -80,6 +80,7 @@ properties:
+               - mediatek,mt2712-tphy
+               - mediatek,mt6893-tphy
+               - mediatek,mt7629-tphy
++              - mediatek,mt7981-tphy
+               - mediatek,mt7986-tphy
+               - mediatek,mt8183-tphy
+               - mediatek,mt8186-tphy
+-- 
+2.51.0
+

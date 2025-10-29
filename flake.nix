@@ -46,7 +46,9 @@
               pkgs.iw
               pkgs.kexec-tools
               pkgs.mtdutilsMinimal
+              pkgs.net-tools
               pkgs.nftables
+              pkgs.phytool
               pkgs.traceroute
             ];
 
