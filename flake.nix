@@ -35,16 +35,22 @@
       modules = [
         inputs.self.mixosModules.default
         (
-          { pkgs, ... }:
+          { config, pkgs, ... }:
           {
             nixpkgs.nixpkgs = inputs.nixpkgs;
             nixpkgs.buildPlatform = "x86_64-linux";
             hardware.openwrt-one.enable = true;
 
+            # TODO(jared): integrate this better into mixos (e.g. kernelPackages?)
+            etc."mdio-netlink".source = pkgs.mdio-netlink.override {
+              inherit (config.boot) kernel;
+            };
+
             bin = [
               pkgs.hostapd
               pkgs.iw
               pkgs.kexec-tools
+              pkgs.mdio-tools
               pkgs.mtdutilsMinimal
               pkgs.net-tools
               pkgs.nftables

@@ -1,7 +1,7 @@
-From 38e2a413c46b9285338c4d7e0b054ac02fcd3568 Mon Sep 17 00:00:00 2001
+From 44aac2a298f6730c0788f4d5f84489935f194b9a Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:48 +0200
-Subject: [PATCH 12/15] arm64: dts: mediatek: mt7981b-openwrt-one: Enable
+Subject: [PATCH 14/17] arm64: dts: mediatek: mt7981b-openwrt-one: Enable
  Ethernet
 
 Enable the Ethernet subsystem on OpenWrt One board with dual-MAC
@@ -19,7 +19,7 @@ Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
  1 file changed, 58 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-index 1597d54dc208..c7fe4f57c48b 100644
+index 9878009385cc..6e6e4f1515f6 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
 +++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
 @@ -3,6 +3,8 @@
@@ -40,7 +40,7 @@ index 1597d54dc208..c7fe4f57c48b 100644
  		serial0 = &uart0;
  	};
  
-@@ -37,6 +41,56 @@ reg_5v: regulator-5v {
+@@ -41,6 +45,56 @@ reg_5v: regulator-5v {
  	};
  };
  
@@ -97,7 +97,7 @@ index 1597d54dc208..c7fe4f57c48b 100644
  &pcie {
  	pinctrl-names = "default";
  	pinctrl-0 = <&pcie_pins>;
-@@ -141,6 +195,10 @@ partition@180000 {
+@@ -145,6 +199,10 @@ partition@180000 {
  	};
  };
  

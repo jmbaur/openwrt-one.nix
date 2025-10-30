@@ -1,7 +1,7 @@
-From 0c91a14b42c7b946001e32f194da5c3eaef41802 Mon Sep 17 00:00:00 2001
+From 74acce8e6fc349384ad55a6a660309e296e47b0e Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:51 +0200
-Subject: [PATCH 15/15] arm64: dts: mediatek: mt7981b-openwrt-one: Enable leds
+Subject: [PATCH 17/17] arm64: dts: mediatek: mt7981b-openwrt-one: Enable leds
 
 The Openwrt One has 3 status leds at the front (red, white, green) as
 well as 2 software controlled leds for the LAN jack (amber, green).
@@ -12,10 +12,10 @@ Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
  1 file changed, 57 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-index c0e4552f8a5e..d370ff262e63 100644
+index 4d1653c336e7..0c0878488ae9 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
 +++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-@@ -39,6 +39,50 @@ reg_5v: regulator-5v {
+@@ -43,6 +43,50 @@ reg_5v: regulator-5v {
  		regulator-boot-on;
  		regulator-always-on;
  	};
@@ -66,7 +66,7 @@ index c0e4552f8a5e..d370ff262e63 100644
  };
  
  &eth {
-@@ -105,6 +149,13 @@ mux {
+@@ -109,6 +153,13 @@ mux {
  		};
  	};
  
@@ -80,7 +80,7 @@ index c0e4552f8a5e..d370ff262e63 100644
  	spi2_flash_pins: spi2-pins {
  		mux {
  			function = "spi";
-@@ -148,6 +199,12 @@ conf {
+@@ -152,6 +203,12 @@ conf {
  	};
  };
  

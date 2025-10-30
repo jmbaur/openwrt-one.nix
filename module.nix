@@ -30,10 +30,16 @@ in
     boot.kernel = pkgs.openwrtOneLinux;
 
     boot.requiredKernelConfig = [ "FW_LOADER_COMPRESS_XZ" ];
+
+    boot.kernelModules = [ "air_en8811h" ];
+
     boot.firmware = [
       (pkgs.runCommand "mediatek-and-wireless-firmware" { } ''
-        mkdir -p $out/lib/firmware/mediatek
-        cp -r ${pkgs.linux-firmware}/lib/firmware/mediatek/* $out/lib/firmware/mediatek
+        mkdir -p $out/lib/firmware
+
+        for dir in mediatek airoha; do
+          cp -r ${pkgs.linux-firmware}/lib/firmware/$dir $out/lib/firmware
+        done
         cp ${pkgs.wireless-regdb}/lib/firmware/regulatory.db* $out/lib/firmware
 
         # Find and fix broken symlinks

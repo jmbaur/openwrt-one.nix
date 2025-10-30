@@ -1,7 +1,7 @@
-From 0fc2205f4dda2806e57b92c1992a1b1e26d7d466 Mon Sep 17 00:00:00 2001
+From 79eff70793b0bc3ac738a0dfa53904a81b773f07 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:46 +0200
-Subject: [PATCH 10/15] arm64: dts: mediatek: mt7981b: Add Ethernet and WiFi
+Subject: [PATCH 12/17] arm64: dts: mediatek: mt7981b: Add Ethernet and WiFi
  offload support
 
 Add device tree nodes for the Ethernet subsystem on MT7981B SoC,
@@ -17,7 +17,7 @@ Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
  1 file changed, 132 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-index 11d5a022417f..77d5bf0c27b1 100644
+index 8c29459af6b0..d856a8857c7f 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
 @@ -47,11 +47,36 @@ reserved-memory {

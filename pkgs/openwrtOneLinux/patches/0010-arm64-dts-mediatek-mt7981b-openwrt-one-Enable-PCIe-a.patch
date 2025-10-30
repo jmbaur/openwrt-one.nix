@@ -1,7 +1,7 @@
-From ace192d11d183ec470fe3bfb5606c87352ebf808 Mon Sep 17 00:00:00 2001
+From 8d8a85cc0bb39c1f4e282962c3efb6f216c68cd2 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:44 +0200
-Subject: [PATCH 08/15] arm64: dts: mediatek: mt7981b-openwrt-one: Enable PCIe
+Subject: [PATCH 10/17] arm64: dts: mediatek: mt7981b-openwrt-one: Enable PCIe
  and USB
 
 Enable the PCIe controller and USB3 XHCI host on the OpenWrt One
@@ -14,10 +14,10 @@ Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
  1 file changed, 43 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-index 90718b112a6c..fd3773888200 100644
+index f836059d7f47..b6ca628ee72f 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
 +++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-@@ -16,9 +16,40 @@ memory@40000000 {
+@@ -20,9 +20,40 @@ memory@40000000 {
  		reg = <0 0x40000000 0 0x40000000>;
  		device_type = "memory";
  	};
@@ -58,7 +58,7 @@ index 90718b112a6c..fd3773888200 100644
  	uart0_pins: uart0-pins {
  		mux {
  			function = "uart";
-@@ -32,3 +63,15 @@ &uart0 {
+@@ -36,3 +67,15 @@ &uart0 {
  	pinctrl-0 = <&uart0_pins>;
  	status = "okay";
  };
