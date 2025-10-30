@@ -1,7 +1,7 @@
 From 6cf9c9e175a45140242e03a954716f914dc998ce Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:37 +0200
-Subject: [PATCH 03/17] arm64: dts: mediatek: mt7981b: Add labels to commonly
+Subject: [PATCH 03/18] arm64: dts: mediatek: mt7981b: Add labels to commonly
  referenced nodes
 
 Add labels to various device nodes in the MT7981B DTSI, similar to other

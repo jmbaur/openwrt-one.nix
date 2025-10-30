@@ -1,7 +1,7 @@
 From d3df112b8e9b340165f32181fb99c49368887cf8 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:50 +0200
-Subject: [PATCH 16/17] arm64: dts: mediatek: mt7981b-openwrt-one: Enable wifi
+Subject: [PATCH 16/18] arm64: dts: mediatek: mt7981b-openwrt-one: Enable wifi
 
 Enable Dual-band WiFI 6 functionality on the Openwrt One
 

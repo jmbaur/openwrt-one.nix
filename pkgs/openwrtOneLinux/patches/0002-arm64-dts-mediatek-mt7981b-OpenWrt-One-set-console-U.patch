@@ -1,7 +1,7 @@
 From 08a23b90c7c32731b43872810d91868a80023865 Mon Sep 17 00:00:00 2001
 From: Bryan Hinton <bryan@bryanhinton.com>
 Date: Sun, 21 Sep 2025 22:58:10 -0500
-Subject: [PATCH 02/17] arm64: dts: mediatek: mt7981b: OpenWrt One: set console
+Subject: [PATCH 02/18] arm64: dts: mediatek: mt7981b: OpenWrt One: set console
  UART to 115200
 
 Use the new uart0 label for the console and make the speed explicit by

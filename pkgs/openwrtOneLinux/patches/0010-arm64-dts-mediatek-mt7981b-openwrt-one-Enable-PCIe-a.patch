@@ -1,7 +1,7 @@
 From 8d8a85cc0bb39c1f4e282962c3efb6f216c68cd2 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:44 +0200
-Subject: [PATCH 10/17] arm64: dts: mediatek: mt7981b-openwrt-one: Enable PCIe
+Subject: [PATCH 10/18] arm64: dts: mediatek: mt7981b-openwrt-one: Enable PCIe
  and USB
 
 Enable the PCIe controller and USB3 XHCI host on the OpenWrt One

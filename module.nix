@@ -31,7 +31,10 @@ in
 
     boot.requiredKernelConfig = [ "FW_LOADER_COMPRESS_XZ" ];
 
-    boot.kernelModules = [ "air_en8811h" ];
+    boot.kernelModules = [
+      "air_en8811h"
+      "mt7915e"
+    ];
 
     init.watchdog = {
       action = "respawn";
@@ -44,12 +47,18 @@ in
 
     boot.firmware = [
       (pkgs.runCommand "mediatek-and-wireless-firmware" { } ''
-        mkdir -p $out/lib/firmware
+        mkdir -p $out/lib/firmware/{mediatek,airoha}
 
         for dir in mediatek airoha; do
-          cp -r ${pkgs.linux-firmware}/lib/firmware/$dir $out/lib/firmware
+          cp -r ${pkgs.linux-firmware}/lib/firmware/$dir/* $out/lib/firmware/$dir/
         done
         cp ${pkgs.wireless-regdb}/lib/firmware/regulatory.db* $out/lib/firmware
+        cp ${
+          pkgs.fetchurl {
+            url = "https://raw.githubusercontent.com/openwrt/mt76/c63db0fcadb88680b35bec202b5142cfd016c10f/firmware/mt7981_eeprom_mt7976_dbdc.bin";
+            hash = "sha256-lyOOIiiJenOINwYEy+cXXgv6DMNfVitkMwsSwarut1E=";
+          }
+        } $out/lib/firmware/mediatek/mt7981_eeprom_mt7976_dbdc.bin
 
         # Find and fix broken symlinks
         while read -r symlink; do

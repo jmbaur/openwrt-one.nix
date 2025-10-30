@@ -1,7 +1,7 @@
 From 74acce8e6fc349384ad55a6a660309e296e47b0e Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:51 +0200
-Subject: [PATCH 17/17] arm64: dts: mediatek: mt7981b-openwrt-one: Enable leds
+Subject: [PATCH 17/18] arm64: dts: mediatek: mt7981b-openwrt-one: Enable leds
 
 The Openwrt One has 3 status leds at the front (red, white, green) as
 well as 2 software controlled leds for the LAN jack (amber, green).

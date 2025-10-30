@@ -1,7 +1,7 @@
 From 9787dc9c843ee368617eb6d6c7a9031e7dcf9d28 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:47 +0200
-Subject: [PATCH 13/17] arm64: dts: mediatek: mt7981b-openwrt-one: Enable SPI
+Subject: [PATCH 13/18] arm64: dts: mediatek: mt7981b-openwrt-one: Enable SPI
  NOR
 
 The openwrt one has a SPI NOR flash which from factory is used for:

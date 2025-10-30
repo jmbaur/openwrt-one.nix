@@ -1,7 +1,7 @@
 From 82a9d8f61c58fca92e970302443fd401e6eee131 Mon Sep 17 00:00:00 2001
 From: Bryan Hinton <bryan@bryanhinton.com>
 Date: Sun, 21 Sep 2025 22:58:09 -0500
-Subject: [PATCH 01/17] arm64: dts: mediatek: mt7981b: add labels for UART0/1/2
+Subject: [PATCH 01/18] arm64: dts: mediatek: mt7981b: add labels for UART0/1/2
  nodes
 
 Add stable labels (uart0, uart1, uart2) to the MT7981B SoC UART nodes so

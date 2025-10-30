@@ -50,6 +50,7 @@
               pkgs.hostapd
               pkgs.iw
               pkgs.kexec-tools
+              pkgs.libgpiod
               pkgs.mdio-tools
               pkgs.mtdutilsMinimal
               pkgs.net-tools

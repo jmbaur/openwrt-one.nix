@@ -1,7 +1,7 @@
 From 4f31c18a27e0af6e2607dc0ac251f629c34a2345 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:41 +0200
-Subject: [PATCH 07/17] dt-bindings: pci: mediatek-pcie-gen3: Add MT7981 PCIe
+Subject: [PATCH 07/18] dt-bindings: pci: mediatek-pcie-gen3: Add MT7981 PCIe
  compatible
 
 Add compatible string for MediaTek MT7981 PCIe Gen3 controller.

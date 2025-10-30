@@ -1,7 +1,7 @@
 From a19d3f0340a7a5e6c0066bf4fc5b60f306742912 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:43 +0200
-Subject: [PATCH 09/17] arm64: dts: mediatek: mt7981b: Add PCIe and USB support
+Subject: [PATCH 09/18] arm64: dts: mediatek: mt7981b: Add PCIe and USB support
 
 Add device tree nodes for PCIe controller and USB3 XHCI host
 controller on MT7981B SoC. Both controllers share the USB3 PHY
