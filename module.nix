@@ -33,6 +33,15 @@ in
 
     boot.kernelModules = [ "air_en8811h" ];
 
+    init.watchdog = {
+      action = "respawn";
+      process = toString [
+        "/bin/watchdog"
+        "-F"
+        "/dev/watchdog"
+      ];
+    };
+
     boot.firmware = [
       (pkgs.runCommand "mediatek-and-wireless-firmware" { } ''
         mkdir -p $out/lib/firmware
