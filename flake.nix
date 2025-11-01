@@ -18,7 +18,7 @@
           directory = ./pkgs;
         }
       )
-      (final: prev: {
+      (final: _: {
         openwrtOneAtfRam = final.openwrtOneAtf.override { bootDevice = "ram"; };
       })
     ];

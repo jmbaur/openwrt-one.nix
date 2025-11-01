@@ -5,19 +5,17 @@
   mdio-tools,
 }:
 
-stdenv.mkDerivation (finalAttrs: {
+stdenv.mkDerivation {
   pname = "mdio-netlink";
-  version = mdio-tools.version;
+  inherit (mdio-tools) version;
 
-  src = mdio-tools.src;
+  inherit (mdio-tools) src;
   sourceRoot = "source/kernel";
 
   nativeBuildInputs = kernel.moduleBuildDependencies;
-
-  hardeningDisable = [ "pic" ];
 
   makeFlags = kernel.commonMakeFlags ++ [
     "KDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
     "INSTALL_MOD_PATH=${placeholder "out"}"
   ];
-})
+}

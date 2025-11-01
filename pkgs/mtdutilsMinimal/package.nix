@@ -1,7 +1,7 @@
 { mtdutils, libuuid }:
 
-mtdutils.overrideAttrs (old: {
+mtdutils.overrideAttrs {
   pname = "mtdutils-minimal";
   buildInputs = [ libuuid ];
   postPatch = "";
-})
+}

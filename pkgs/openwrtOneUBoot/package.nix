@@ -1,7 +1,6 @@
 {
   armTrustedFirmwareTools,
   buildUBoot,
-  fetchpatch,
   xxd,
 }:
 
