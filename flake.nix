@@ -35,7 +35,12 @@
       modules = [
         inputs.self.mixosModules.default
         (
-          { config, pkgs, ... }:
+          {
+            config,
+            lib,
+            pkgs,
+            ...
+          }:
           {
             nixpkgs.nixpkgs = inputs.nixpkgs;
             nixpkgs.buildPlatform = "x86_64-linux";
@@ -63,6 +68,20 @@
               tty = "ttyS0";
               action = "askfirst";
               process = "/bin/sh";
+            };
+
+            users.root = {
+              uid = 0;
+              gid = 0;
+            };
+
+            groups.root = {
+              id = 0;
+            };
+
+            init.hostapd = {
+              action = "respawn";
+              process = "${lib.getExe' pkgs.hostapd "hostapd"} ${./hostapd.conf}";
             };
           }
         )
