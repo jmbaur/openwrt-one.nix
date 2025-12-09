@@ -1,4 +1,4 @@
-From ff47e65f2ac52177fa63d15fe2ffbdfd1ccbaf4c Mon Sep 17 00:00:00 2001
+From a6c7a6c21b4e480812a8d7fa185b2c3df6bb2068 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:42 +0200
 Subject: [PATCH 08/18] dt-bindings: phy: mediatek,tphy: Add support for MT7981
@@ -24,5 +24,5 @@ index b2218c151939..ff5c77ef1176 100644
                - mediatek,mt8183-tphy
                - mediatek,mt8186-tphy
 -- 
-2.51.0
+2.51.2
 

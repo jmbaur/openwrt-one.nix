@@ -1,4 +1,4 @@
-From 82a9d8f61c58fca92e970302443fd401e6eee131 Mon Sep 17 00:00:00 2001
+From 3d81629f427d88d8f22fb9c8154ad6ccb1caeca2 Mon Sep 17 00:00:00 2001
 From: Bryan Hinton <bryan@bryanhinton.com>
 Date: Sun, 21 Sep 2025 22:58:09 -0500
 Subject: [PATCH 01/18] arm64: dts: mediatek: mt7981b: add labels for UART0/1/2
@@ -49,5 +49,5 @@ index 277c11247c13..5dae4a5f03a5 100644
  			reg = <0 0x11004000 0 0x100>;
  			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
 -- 
-2.51.0
+2.51.2
 

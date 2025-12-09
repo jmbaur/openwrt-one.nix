@@ -1,4 +1,4 @@
-From d93022511c819ff5e8de896fa889a1b443bde2fc Mon Sep 17 00:00:00 2001
+From d1c4314f7d3d70c72a293f1eec88d5aa3b21841f Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:49 +0200
 Subject: [PATCH 15/18] arm64: dts: mediatek: mt7981b: Add wifi memory region
@@ -37,5 +37,5 @@ index d856a8857c7f..c322d552f053 100644
  	};
  
 -- 
-2.51.0
+2.51.2
 

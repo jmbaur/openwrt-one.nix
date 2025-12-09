@@ -1,4 +1,4 @@
-From 6cf9c9e175a45140242e03a954716f914dc998ce Mon Sep 17 00:00:00 2001
+From 9bbaac71aa0fbc1f51b8c446ee796d702a6c5ee5 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:37 +0200
 Subject: [PATCH 03/18] arm64: dts: mediatek: mt7981b: Add labels to commonly
@@ -123,5 +123,5 @@ index 5dae4a5f03a5..2669d0322470 100644
  			reg = <0 0x18000000 0 0x1000000>,
  			      <0 0x10003000 0 0x1000>,
 -- 
-2.51.0
+2.51.2
 

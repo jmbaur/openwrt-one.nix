@@ -1,4 +1,4 @@
-From 44aac2a298f6730c0788f4d5f84489935f194b9a Mon Sep 17 00:00:00 2001
+From 39cfc8614d126dc17707c9672b964356cf2c89a3 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:48 +0200
 Subject: [PATCH 14/18] arm64: dts: mediatek: mt7981b-openwrt-one: Enable
@@ -109,5 +109,5 @@ index 9878009385cc..6e6e4f1515f6 100644
  	pinctrl-names = "default";
  	pinctrl-0 = <&uart0_pins>;
 -- 
-2.51.0
+2.51.2
 

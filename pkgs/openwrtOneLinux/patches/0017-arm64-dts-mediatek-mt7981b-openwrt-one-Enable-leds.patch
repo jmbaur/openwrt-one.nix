@@ -1,4 +1,4 @@
-From 74acce8e6fc349384ad55a6a660309e296e47b0e Mon Sep 17 00:00:00 2001
+From 3ec2940e3226f19b54ad119e2af448ebb42011fa Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:51 +0200
 Subject: [PATCH 17/18] arm64: dts: mediatek: mt7981b-openwrt-one: Enable leds
@@ -94,5 +94,5 @@ index 4d1653c336e7..0c0878488ae9 100644
  	pinctrl-names = "default";
  	pinctrl-0 = <&spi2_flash_pins>;
 -- 
-2.51.0
+2.51.2
 

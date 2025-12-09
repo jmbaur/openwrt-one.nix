@@ -1,4 +1,4 @@
-From bdc40fbf8bf0f50570c49fad4c333068812a0d21 Mon Sep 17 00:00:00 2001
+From 6157834ad546e135c630b2dae1f9d36f368bc16d Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:39 +0200
 Subject: [PATCH 05/18] arm64: dts: mediatek: mt7981b: Add reserved memory for
@@ -35,5 +35,5 @@ index 2669d0322470..4dd752fb90d6 100644
  		compatible = "simple-bus";
  		ranges;
 -- 
-2.51.0
+2.51.2
 

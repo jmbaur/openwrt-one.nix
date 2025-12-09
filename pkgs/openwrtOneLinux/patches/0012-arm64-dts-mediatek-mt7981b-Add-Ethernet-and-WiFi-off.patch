@@ -1,4 +1,4 @@
-From 79eff70793b0bc3ac738a0dfa53904a81b773f07 Mon Sep 17 00:00:00 2001
+From 1b8d4340204be337c2f2ea1730dbf309a1659e30 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:46 +0200
 Subject: [PATCH 12/18] arm64: dts: mediatek: mt7981b: Add Ethernet and WiFi
@@ -186,5 +186,5 @@ index 8c29459af6b0..d856a8857c7f 100644
  		wifi: wifi@18000000 {
  			compatible = "mediatek,mt7981-wmac";
 -- 
-2.51.0
+2.51.2
 
