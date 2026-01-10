@@ -81,17 +81,19 @@ in
       }:
       runCommand "mixos.itb"
         {
-          nativeBuildInputs = [
+          # TODO(jared): ubootTools fails for pkgsBuildHost, just put
+          # in depsBuildBuild for now.
+          depsBuildBuild = [
             dtc
             ubootTools
             xz
           ];
         }
         ''
-          install -m0644 ${config.boot.kernel}/${pkgs.stdenv.hostPlatform.linux-kernel.target} kernel
+          install -m0644 ${config.boot.kernelPackages.kernel}/${pkgs.stdenv.hostPlatform.linux-kernel.target} kernel
           lzma --verbose --compress --threads=$NIX_BUILD_CORES kernel
           install -m0644 ${config.system.build.initrd}/initrd .
-          install -m0644 ${config.boot.kernel}/dtbs/mediatek/mt7981b-openwrt-one.dtb .
+          install -m0644 ${config.boot.kernelPackages.kernel}/dtbs/mediatek/mt7981b-openwrt-one.dtb .
           install -m0644 ${./mixos.its} mixos.its
           fdtput -p -t s *.dtb /chosen bootargs "console=ttyS0,115200 debug"
           mkimage --fit mixos.its $out
