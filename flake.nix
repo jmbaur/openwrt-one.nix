@@ -46,10 +46,7 @@
             nixpkgs.buildPlatform = "x86_64-linux";
             hardware.openwrt-one.enable = true;
 
-            # TODO(jared): integrate this better into mixos (e.g. kernelPackages?)
-            etc."mdio-netlink".source = pkgs.mdio-netlink.override {
-              inherit (config.boot) kernel;
-            };
+            boot.extraModulePackages = [ config.boot.kernelPackages.mdio-netlink ];
 
             bin = [
               pkgs.hostapd

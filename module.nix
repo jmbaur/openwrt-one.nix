@@ -6,9 +6,9 @@
 }:
 
 let
+  inherit (builtins) listToAttrs;
   inherit (lib)
     imap1
-    listToAttrs
     mkDefault
     mkEnableOption
     mkIf
@@ -27,7 +27,7 @@ in
   config = mkIf cfg.enable {
     nixpkgs.hostPlatform = mkDefault "aarch64-linux";
 
-    boot.kernel = pkgs.openwrtOneLinux;
+    boot.kernelPackages = pkgs.linuxPackagesFor pkgs.openwrtOneLinux;
 
     boot.requiredKernelConfig = [ "FW_LOADER_COMPRESS_XZ" ];
 
