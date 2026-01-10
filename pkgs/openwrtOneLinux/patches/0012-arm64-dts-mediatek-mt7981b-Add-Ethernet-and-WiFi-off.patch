@@ -186,5 +186,5 @@ index 8c29459af6b0..d856a8857c7f 100644
  		wifi: wifi@18000000 {
  			compatible = "mediatek,mt7981-wmac";
 -- 
-2.51.2
+2.52.0
 

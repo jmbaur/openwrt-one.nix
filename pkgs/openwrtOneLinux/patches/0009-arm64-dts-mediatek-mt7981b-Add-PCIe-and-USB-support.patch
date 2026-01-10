@@ -127,5 +127,5 @@ index 4dd752fb90d6..8c29459af6b0 100644
  			compatible = "mediatek,mt7981-efuse", "mediatek,efuse";
  			reg = <0 0x11f20000 0 0x1000>;
 -- 
-2.51.2
+2.52.0
 
