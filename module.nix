@@ -7,6 +7,7 @@
 
 let
   inherit (builtins) listToAttrs;
+  inherit (lib.attrsets) unionOfDisjoint;
   inherit (lib)
     imap1
     mkDefault
@@ -116,6 +117,8 @@ in
       }:
       runCommand "openwrt-one-ubi-image"
         {
+          nativeBuildInputs = [ mtdutils ];
+
           env = {
             ubinizeConfig = (formats.ini { }).generate "ubinize.ini" (
               listToAttrs (
@@ -125,7 +128,7 @@ in
                     { name, value }:
                     {
                       inherit name;
-                      value = value // {
+                      value = unionOfDisjoint value {
                         inherit vol_id;
                         vol_name = name;
                       };
@@ -149,23 +152,34 @@ in
                       };
                     }
                     {
-                      name = "state";
+                      name = "os";
                       value = {
                         mode = "ubi";
                         vol_type = "dynamic";
                         vol_size = "100MiB";
+                        image = "os.ubifs";
+                        vol_alignment = 1;
+                      };
+                    }
+                    {
+                      name = "state";
+                      value = {
+                        mode = "ubi";
+                        vol_type = "dynamic";
+                        vol_size = "50MiB";
                         vol_flags = "autoresize";
+                        vol_alignment = 1;
                       };
                     }
                   ]
               )
             );
           };
-
-          nativeBuildInputs = [ mtdutils ];
         }
         ''
           mkdir -p $out
+          install -Dm0644 ${config.system.build.fitImage} os/mixos.itb
+          mkfs.ubifs -m 2048 -e 124KiB -c ${toString (100 * 1024 / 124)} -r os os.ubifs
           ubinize --verbose --output=$out/ubi.img --min-io-size=2048 --peb-size=128KiB $ubinizeConfig
         ''
     ) { };
