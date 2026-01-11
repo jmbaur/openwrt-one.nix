@@ -1,13 +1,13 @@
-From 21989a23e9fa7de20620e619bf5723afda3a15a0 Mon Sep 17 00:00:00 2001
+From e15baee9a7d09e74b5a3bf179cafe1d6df85ba5b Mon Sep 17 00:00:00 2001
 From: Jared Baur <jaredbaur@fastmail.com>
 Date: Thu, 28 Aug 2025 12:07:25 +0100
 Subject: [PATCH] Add openwrt one
 
 ---
  arch/arm/dts/openwrt-one.dts                  | 208 ++++++++++++++++++
- configs/mt7981_openwrt-one-spi-nand_defconfig | 120 ++++++++++
- defenvs/openwrt-one-spi-nand_env              |   3 +
- 3 files changed, 331 insertions(+)
+ configs/mt7981_openwrt-one-spi-nand_defconfig | 122 ++++++++++
+ defenvs/openwrt-one-spi-nand_env              |   2 +
+ 3 files changed, 332 insertions(+)
  create mode 100644 arch/arm/dts/openwrt-one.dts
  create mode 100644 configs/mt7981_openwrt-one-spi-nand_defconfig
  create mode 100644 defenvs/openwrt-one-spi-nand_env
@@ -228,10 +228,10 @@ index 00000000000..4b90136f4db
 +};
 diff --git a/configs/mt7981_openwrt-one-spi-nand_defconfig b/configs/mt7981_openwrt-one-spi-nand_defconfig
 new file mode 100644
-index 00000000000..01814977b23
+index 00000000000..4745ff75ab7
 --- /dev/null
 +++ b/configs/mt7981_openwrt-one-spi-nand_defconfig
-@@ -0,0 +1,120 @@
+@@ -0,0 +1,122 @@
 +CONFIG_ARM=y
 +CONFIG_SYS_HAS_NONCACHED_MEMORY=y
 +CONFIG_POSITION_INDEPENDENT=y
@@ -352,15 +352,17 @@ index 00000000000..01814977b23
 +CONFIG_USB_STORAGE=y
 +CONFIG_HEXDUMP=y
 +CONFIG_BOOTSTD_FULL=y
++CONFIG_USE_BOOTCOMMAND=y
++CONFIG_BOOTCOMMAND="ubifsmount ubi0:os && ubifsload $loadaddr mixos.itb && bootm"
+\ No newline at end of file
 diff --git a/defenvs/openwrt-one-spi-nand_env b/defenvs/openwrt-one-spi-nand_env
 new file mode 100644
-index 00000000000..b9f683a81c5
+index 00000000000..55b0424546a
 --- /dev/null
 +++ b/defenvs/openwrt-one-spi-nand_env
-@@ -0,0 +1,3 @@
+@@ -0,0 +1,2 @@
 +loadaddr=0x46000000
 +console=earlycon=uart8250,mmio32,0x11002000 console=ttyS0
-+bootcmd=ubifsmount ubi0:os && ubifsload $loadaddr mixos.itb && bootm
 -- 
 2.52.0
 
