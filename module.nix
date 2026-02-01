@@ -109,6 +109,12 @@ in
       ];
     };
 
+    state = mkDefault {
+      enable = true;
+      fsType = "ubifs";
+      device = "/dev/ubi0_4";
+    };
+
     system.build.ubiImage = pkgs.callPackage (
       {
         runCommand,
