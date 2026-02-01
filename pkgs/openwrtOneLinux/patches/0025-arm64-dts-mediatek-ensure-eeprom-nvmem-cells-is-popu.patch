@@ -1,7 +1,7 @@
-From bd7c99b59b119264bff7a962ecb80f4cb3b5b015 Mon Sep 17 00:00:00 2001
+From 1ebd557f034009708de49b5c0f2f8ad703738858 Mon Sep 17 00:00:00 2001
 From: Jared Baur <jaredbaur@fastmail.com>
 Date: Wed, 29 Oct 2025 21:57:30 -0700
-Subject: [PATCH 18/18] arm64: dts: mediatek: ensure eeprom nvmem cells is
+Subject: [PATCH 25/26] arm64: dts: mediatek: ensure eeprom nvmem cells is
  populated
 
 ---

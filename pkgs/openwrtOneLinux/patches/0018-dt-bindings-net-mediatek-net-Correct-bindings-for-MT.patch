@@ -1,7 +1,7 @@
-From 6562c5c71a39bf5339ae1390a69c5c3f34bc3160 Mon Sep 17 00:00:00 2001
+From 49505a7398fa8edea3d25fa46679e0de26f6518d Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:45 +0200
-Subject: [PATCH 11/18] dt-bindings: net: mediatek,net: Correct bindings for
+Subject: [PATCH 18/26] dt-bindings: net: mediatek,net: Correct bindings for
  MT7981
 
 Different SoCs have different numbers of Wireless Ethernet

@@ -1,7 +1,7 @@
-From 1b8d4340204be337c2f2ea1730dbf309a1659e30 Mon Sep 17 00:00:00 2001
+From 52c440021efe9ff13fe3613126717d3c6eae2cf6 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:46 +0200
-Subject: [PATCH 12/18] arm64: dts: mediatek: mt7981b: Add Ethernet and WiFi
+Subject: [PATCH 19/26] arm64: dts: mediatek: mt7981b: Add Ethernet and WiFi
  offload support
 
 Add device tree nodes for the Ethernet subsystem on MT7981B SoC,
@@ -17,7 +17,7 @@ Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
  1 file changed, 132 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-index 8c29459af6b0..d856a8857c7f 100644
+index 18fda4b68dde..cb12d2e55637 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
 @@ -47,11 +47,36 @@ reserved-memory {
@@ -76,7 +76,7 @@ index 8c29459af6b0..d856a8857c7f 100644
  		uart0: serial@11002000 {
  			compatible = "mediatek,mt7981-uart", "mediatek,mt6577-uart";
  			reg = <0 0x11002000 0 0x100>;
-@@ -334,6 +371,10 @@ efuse: efuse@11f20000 {
+@@ -346,6 +383,10 @@ efuse: efuse@11f20000 {
  			thermal_calibration: thermal-calib@274 {
  				reg = <0x274 0xc>;
  			};
@@ -87,7 +87,7 @@ index 8c29459af6b0..d856a8857c7f 100644
  		};
  
  		ethsys: clock-controller@15000000 {
-@@ -342,6 +383,97 @@ ethsys: clock-controller@15000000 {
+@@ -354,6 +395,97 @@ ethsys: clock-controller@15000000 {
  			#clock-cells = <1>;
  			#reset-cells = <1>;
  		};

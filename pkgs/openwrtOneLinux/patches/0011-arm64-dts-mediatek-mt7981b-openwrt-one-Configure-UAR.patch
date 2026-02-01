@@ -1,7 +1,7 @@
-From a5f789b52f09097ac7da801e401b343b454451a5 Mon Sep 17 00:00:00 2001
+From ef7cf74bffbd4d7abb643371f9f91ebd8f5d9552 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:38 +0200
-Subject: [PATCH 04/18] arm64: dts: mediatek: mt7981b-openwrt-one: Configure
+Subject: [PATCH 11/26] arm64: dts: mediatek: mt7981b-openwrt-one: Configure
  UART0 pinmux
 
 Add explicit pinctrl configuration for UART0 on the OpenWrt One board,

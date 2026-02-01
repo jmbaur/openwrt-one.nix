@@ -1,7 +1,7 @@
-From a6c7a6c21b4e480812a8d7fa185b2c3df6bb2068 Mon Sep 17 00:00:00 2001
+From 6de05536daa3f3a520bbd35fe40223e787224492 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:42 +0200
-Subject: [PATCH 08/18] dt-bindings: phy: mediatek,tphy: Add support for MT7981
+Subject: [PATCH 15/26] dt-bindings: phy: mediatek,tphy: Add support for MT7981
 
 Add a compatible string for Filogic 820, this chip integrates a MediaTek
 generic T-PHY version 2

@@ -1,7 +1,7 @@
-From 3d81629f427d88d8f22fb9c8154ad6ccb1caeca2 Mon Sep 17 00:00:00 2001
+From 99edef48ec423fa342749b4478a1a7bb7dee155d Mon Sep 17 00:00:00 2001
 From: Bryan Hinton <bryan@bryanhinton.com>
 Date: Sun, 21 Sep 2025 22:58:09 -0500
-Subject: [PATCH 01/18] arm64: dts: mediatek: mt7981b: add labels for UART0/1/2
+Subject: [PATCH 08/26] arm64: dts: mediatek: mt7981b: add labels for UART0/1/2
  nodes
 
 Add stable labels (uart0, uart1, uart2) to the MT7981B SoC UART nodes so
@@ -18,7 +18,7 @@ Signed-off-by: Bryan Hinton <bryan@bryanhinton.com>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-index 277c11247c13..5dae4a5f03a5 100644
+index a0550176138a..9cc81bae5476 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
 @@ -94,7 +94,7 @@ pwm@10048000 {

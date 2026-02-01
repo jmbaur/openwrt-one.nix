@@ -1,7 +1,7 @@
-From c15c6a10eb811e24571efd4e80af1f584c2d4b73 Mon Sep 17 00:00:00 2001
+From aba3c728b12a2f7184096b2f23ed7f4d10d5f565 Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:40 +0200
-Subject: [PATCH 06/18] dt-bindings: mfd: syscon: Add mt7981-topmisc
+Subject: [PATCH 13/26] dt-bindings: mfd: syscon: Add mt7981-topmisc
 
 This hardware block amongst other things includes a multiplexer for a
 high-speed Combo-Phy. This binding allows exposing the multiplexer

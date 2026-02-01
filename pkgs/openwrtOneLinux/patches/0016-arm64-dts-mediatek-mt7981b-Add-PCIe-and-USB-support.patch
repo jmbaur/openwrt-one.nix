@@ -1,7 +1,7 @@
-From 2d77623769bcc02483c54ae3929331381e6a105c Mon Sep 17 00:00:00 2001
+From 18ca182c4d45b951cafc6688d4e65f46e7b0bd3d Mon Sep 17 00:00:00 2001
 From: Sjoerd Simons <sjoerd@collabora.com>
 Date: Thu, 16 Oct 2025 12:08:43 +0200
-Subject: [PATCH 09/18] arm64: dts: mediatek: mt7981b: Add PCIe and USB support
+Subject: [PATCH 16/26] arm64: dts: mediatek: mt7981b: Add PCIe and USB support
 
 Add device tree nodes for PCIe controller and USB3 XHCI host
 controller on MT7981B SoC. Both controllers share the USB3 PHY
@@ -20,7 +20,7 @@ Signed-off-by: Sjoerd Simons <sjoerd@collabora.com>
  1 file changed, 82 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
-index 4dd752fb90d6..8c29459af6b0 100644
+index 153156fbe04c..18fda4b68dde 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
 +++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
 @@ -2,6 +2,7 @@
@@ -31,7 +31,7 @@ index 4dd752fb90d6..8c29459af6b0 100644
  #include <dt-bindings/reset/mt7986-resets.h>
  
  / {
-@@ -221,6 +222,57 @@ auxadc: adc@1100d000 {
+@@ -233,6 +234,57 @@ auxadc: adc@1100d000 {
  			status = "disabled";
  		};
  
@@ -89,7 +89,7 @@ index 4dd752fb90d6..8c29459af6b0 100644
  		pio: pinctrl@11d00000 {
  			compatible = "mediatek,mt7981-pinctrl";
  			reg = <0 0x11d00000 0 0x1000>,
-@@ -243,6 +295,36 @@ pio: pinctrl@11d00000 {
+@@ -255,6 +307,36 @@ pio: pinctrl@11d00000 {
  			#interrupt-cells = <2>;
  		};
  
