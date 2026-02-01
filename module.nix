@@ -95,7 +95,21 @@ in
           lzma --verbose --compress --threads=$NIX_BUILD_CORES kernel
           install -m0644 ${config.system.build.initrd}/initrd .
           install -m0644 ${config.boot.kernelPackages.kernel}/dtbs/mediatek/mt7981b-openwrt-one.dtb .
-          install -m0644 ${./mixos.its} mixos.its
+          install -m0644 ${
+            pkgs.replaceVars ./mixos.its rec {
+              load =
+                "0x"
+                + (toHexString (
+                  (
+                    1120 # uboot's loadaddr
+                    + 100 # max FIT image size
+                  )
+                  * 1024
+                  * 1024
+                ));
+              entry = load;
+            }
+          } mixos.its
           fdtput -p -t s *.dtb /chosen bootargs "console=ttyS0,115200 debug"
           mkimage --fit mixos.its $out
         ''

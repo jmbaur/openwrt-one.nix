@@ -12,8 +12,8 @@
 			arch = "arm64";
 			os = "linux";
 			compression = "lzma";
-			load = <0x4a000000>;
-			entry = <0x4a000000>;
+			load = <@load@>;
+			entry = <@entry@>;
 			hash-1 {
 				algo = "sha256";
 			};
