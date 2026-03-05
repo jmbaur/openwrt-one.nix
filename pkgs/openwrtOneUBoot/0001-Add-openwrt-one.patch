@@ -1,13 +1,13 @@
-From 51359b8051114ade2d525488884e35c0c3f770ca Mon Sep 17 00:00:00 2001
+From d1f6bebf571149b671d55c7628fe0c2acabfdd17 Mon Sep 17 00:00:00 2001
 From: Jared Baur <jaredbaur@fastmail.com>
 Date: Thu, 28 Aug 2025 12:07:25 +0100
 Subject: [PATCH] Add openwrt one
 
 ---
  arch/arm/dts/openwrt-one.dts                  | 208 ++++++++++++++++++
- configs/mt7981_openwrt-one-spi-nand_defconfig | 123 +++++++++++
+ configs/mt7981_openwrt-one-spi-nand_defconfig | 126 +++++++++++
  defenvs/openwrt-one-spi-nand_env              |   2 +
- 3 files changed, 333 insertions(+)
+ 3 files changed, 336 insertions(+)
  create mode 100644 arch/arm/dts/openwrt-one.dts
  create mode 100644 configs/mt7981_openwrt-one-spi-nand_defconfig
  create mode 100644 defenvs/openwrt-one-spi-nand_env
@@ -228,10 +228,10 @@ index 00000000000..4b90136f4db
 +};
 diff --git a/configs/mt7981_openwrt-one-spi-nand_defconfig b/configs/mt7981_openwrt-one-spi-nand_defconfig
 new file mode 100644
-index 00000000000..9527fc388d3
+index 00000000000..bcf2326aedc
 --- /dev/null
 +++ b/configs/mt7981_openwrt-one-spi-nand_defconfig
-@@ -0,0 +1,123 @@
+@@ -0,0 +1,126 @@
 +CONFIG_ARM=y
 +CONFIG_SYS_HAS_NONCACHED_MEMORY=y
 +CONFIG_POSITION_INDEPENDENT=y
@@ -290,6 +290,9 @@ index 00000000000..9527fc388d3
 +CONFIG_CMD_HASH=y
 +CONFIG_CMD_SMC=y
 +CONFIG_CMD_FAT=y
++CONFIG_CMD_LSBLK=y
++CONFIG_CMD_GPT=y
++CONFIG_CMD_PART=y
 +CONFIG_CMD_FS_GENERIC=y
 +CONFIG_CMD_FS_UUID=y
 +CONFIG_CMD_UBI=y
@@ -355,7 +358,6 @@ index 00000000000..9527fc388d3
 +CONFIG_USE_BOOTCOMMAND=y
 +# CONFIG_BOOTSTD is not set
 +CONFIG_BOOTCOMMAND="ubifsmount ubi0:os && ubifsload $loadaddr mixos.itb && bootm"
-\ No newline at end of file
 diff --git a/defenvs/openwrt-one-spi-nand_env b/defenvs/openwrt-one-spi-nand_env
 new file mode 100644
 index 00000000000..55b0424546a
@@ -365,5 +367,5 @@ index 00000000000..55b0424546a
 +loadaddr=0x46000000
 +console=earlycon=uart8250,mmio32,0x11002000 console=ttyS0
 -- 
-2.52.0
+2.53.0
 
