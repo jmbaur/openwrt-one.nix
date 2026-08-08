@@ -26,25 +26,17 @@ in
   };
 
   config = mkIf cfg.enable {
-    nixpkgs.hostPlatform = mkDefault "aarch64-linux";
-
-    boot.kernelPackages = pkgs.linuxPackagesFor pkgs.openwrtOneLinux;
-
-    boot.requiredKernelConfig = [ "FW_LOADER_COMPRESS_XZ" ];
+    boot.kernelPackages = pkgs.linuxKernel.packagesFor (
+      import ./kernel {
+        inherit lib;
+        inherit (pkgs) linuxKernel;
+      }
+    );
 
     boot.kernelModules = [
       "air_en8811h"
       "mt7915e"
     ];
-
-    init.watchdog = {
-      action = "respawn";
-      process = toString [
-        "/bin/watchdog"
-        "-F"
-        "/dev/watchdog"
-      ];
-    };
 
     boot.firmware = [
       (pkgs.runCommand "mediatek-and-wireless-firmware" { } ''
@@ -54,12 +46,6 @@ in
           cp -r ${pkgs.linux-firmware}/lib/firmware/$dir/* $out/lib/firmware/$dir/
         done
         cp ${pkgs.wireless-regdb}/lib/firmware/regulatory.db* $out/lib/firmware
-        cp ${
-          pkgs.fetchurl {
-            url = "https://raw.githubusercontent.com/openwrt/mt76/c63db0fcadb88680b35bec202b5142cfd016c10f/firmware/mt7981_eeprom_mt7976_dbdc.bin";
-            hash = "sha256-lyOOIiiJenOINwYEy+cXXgv6DMNfVitkMwsSwarut1E=";
-          }
-        } $out/lib/firmware/mediatek/mt7981_eeprom_mt7976_dbdc.bin
 
         # Find and fix broken symlinks
         while read -r symlink; do
@@ -91,7 +77,7 @@ in
           ];
         }
         ''
-          install -m0644 ${config.boot.kernelPackages.kernel}/${pkgs.stdenv.hostPlatform.linux-kernel.target} kernel
+          install -m0644 ${config.system.build.toplevel}/kernel kernel
           lzma --verbose --compress --threads=$NIX_BUILD_CORES kernel
           install -m0644 ${config.system.build.initrd}/initrd .
           install -m0644 ${config.boot.kernelPackages.kernel}/dtbs/mediatek/mt7981b-openwrt-one.dtb .
@@ -126,7 +112,7 @@ in
     state = mkDefault {
       enable = true;
       fsType = "ubifs";
-      device = "/dev/ubi0_4";
+      source = "/dev/ubi0_4";
     };
 
     system.build.ubiImage = pkgs.callPackage (

@@ -5,10 +5,7 @@
   };
 
   outputs = inputs: {
-    mixosModules.default = {
-      imports = [ ./module.nix ];
-      nixpkgs.overlays = [ inputs.self.overlays.default ];
-    };
+    mixosModules.default.imports = [ ./module.nix ];
 
     overlays.default = inputs.nixpkgs.lib.composeManyExtensions [
       (
@@ -42,13 +39,17 @@
             ...
           }:
           {
-            nixpkgs.nixpkgs = inputs.nixpkgs;
-            nixpkgs.buildPlatform = "x86_64-linux";
+            nixpkgs.pkgs = import inputs.nixpkgs {
+              localSystem = "x86_64-linux";
+              crossSystem = "aarch64-linux";
+              overlays = [ inputs.self.overlays.default ];
+            };
+
             hardware.openwrt-one.enable = true;
 
             boot.extraModulePackages = [ config.boot.kernelPackages.mdio-netlink ];
 
-            bin = [
+            packages = [
               pkgs.hostapd
               pkgs.iw
               pkgs.kexec-tools
