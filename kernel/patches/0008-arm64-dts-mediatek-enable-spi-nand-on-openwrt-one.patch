@@ -1,17 +1,18 @@
-From bec75c9b2b2ed3c6a0d8eb90511bd0576d95e889 Mon Sep 17 00:00:00 2001
+From d92916caa28426797125705a85bed8ab5bdb6e6f Mon Sep 17 00:00:00 2001
 From: Jared Baur <jaredbaur@fastmail.com>
 Date: Sat, 31 Jan 2026 15:20:15 -0800
-Subject: [PATCH 26/26] arm64: dts: mediatek: enable spi-nand on openwrt-one
+Subject: [PATCH 8/8] arm64: dts: mediatek: enable spi-nand on openwrt-one
 
 ---
  .../boot/dts/mediatek/mt7981b-openwrt-one.dts | 80 +++++++++++++++++++
- 1 file changed, 80 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt7981b.dtsi     |  2 +-
+ 2 files changed, 81 insertions(+), 1 deletion(-)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-index 4d97cc608bed..807707e3c29c 100644
+index b7ff7b8e1375e..229eb2d0860d2 100644
 --- a/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
 +++ b/arch/arm64/boot/dts/mediatek/mt7981b-openwrt-one.dts
-@@ -160,6 +160,25 @@ mux {
+@@ -164,6 +164,25 @@ mux {
  		};
  	};
  
@@ -37,7 +38,7 @@ index 4d97cc608bed..807707e3c29c 100644
  	spi2_flash_pins: spi2-pins {
  		mux {
  			function = "spi";
-@@ -209,6 +228,67 @@ &pwm {
+@@ -206,6 +225,67 @@ &pwm {
  	status = "okay";
  };
  
@@ -105,6 +106,19 @@ index 4d97cc608bed..807707e3c29c 100644
  &spi2 {
  	pinctrl-names = "default";
  	pinctrl-0 = <&spi2_flash_pins>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+index bc2aa4e002ae0..8cee33fae2222 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7981b.dtsi
+@@ -233,7 +233,7 @@ spi2: spi@11009000 {
+ 			status = "disabled";
+ 		};
+ 
+-		spi@1100a000 {
++		spi0: spi@1100a000 {
+ 			compatible = "mediatek,mt7981-spi-ipm", "mediatek,spi-ipm";
+ 			reg = <0 0x1100a000 0 0x1000>;
+ 			interrupts = <GIC_SPI 140 IRQ_TYPE_LEVEL_HIGH>;
 -- 
-2.52.0
+2.55.0
 

@@ -1,7 +1,7 @@
-From 5702eff5285c5f6b40a9cf9471b8c719aa31c9c1 Mon Sep 17 00:00:00 2001
+From fa4243a1b5dff524d0d438b8c0e1fdb6fd2a7c95 Mon Sep 17 00:00:00 2001
 From: "SkyLake.Huang" <skylake.huang@mediatek.com>
 Date: Thu, 23 Jun 2022 18:39:56 +0800
-Subject: [PATCH 05/26] drivers: mtd: spinand: Add calibration support for
+Subject: [PATCH 5/8] drivers: mtd: spinand: Add calibration support for
  spinand
 
 Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
@@ -10,10 +10,10 @@ Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
  1 file changed, 54 insertions(+)
 
 diff --git a/drivers/mtd/nand/spi/core.c b/drivers/mtd/nand/spi/core.c
-index f92133b8e1a6..a37ce1a6ec2b 100644
+index 74bb5ee83b314..f10ccab4d761d 100644
 --- a/drivers/mtd/nand/spi/core.c
 +++ b/drivers/mtd/nand/spi/core.c
-@@ -1267,6 +1267,56 @@ static int spinand_manufacturer_match(struct spinand_device *spinand,
+@@ -1395,6 +1395,56 @@ static int spinand_manufacturer_match(struct spinand_device *spinand,
  	return -EOPNOTSUPP;
  }
  
@@ -70,9 +70,9 @@ index f92133b8e1a6..a37ce1a6ec2b 100644
  static int spinand_id_detect(struct spinand_device *spinand)
  {
  	u8 *id = spinand->id.data;
-@@ -1543,6 +1593,10 @@ static int spinand_init(struct spinand_device *spinand)
- 	if (!spinand->scratchbuf)
- 		return -ENOMEM;
+@@ -1915,6 +1965,10 @@ static int spinand_init(struct spinand_device *spinand)
+ 
+ 	spinand_init_ssdr_templates(spinand);
  
 +	ret = spi_mem_do_calibration(spinand->spimem, spinand_cal_read, spinand);
 +	if (ret)
@@ -82,5 +82,5 @@ index f92133b8e1a6..a37ce1a6ec2b 100644
  	if (ret)
  		goto err_free_bufs;
 -- 
-2.52.0
+2.55.0
 

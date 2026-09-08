@@ -1,8 +1,8 @@
-From b7efbcbb0973a46e4219230c36b92236f5fd0f70 Mon Sep 17 00:00:00 2001
+From 23b6889053b8aca61240d0d2644af61066d8ec09 Mon Sep 17 00:00:00 2001
 From: "SkyLake.Huang" <skylake.huang@mediatek.com>
 Date: Thu, 23 Jun 2022 18:29:51 +0800
-Subject: [PATCH 01/26] drivers: spi-mt65xx: Move chip_config to driver's
- private data
+Subject: [PATCH 1/8] drivers: spi-mt65xx: Move chip_config to driver's private
+ data
 
 Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
 ---
@@ -12,7 +12,7 @@ Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
  delete mode 100644 include/linux/platform_data/spi-mt65xx.h
 
 diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 4b40985af1ea..2e0d94d3b929 100644
+index 96f8555be9834..062db4c874a55 100644
 --- a/drivers/spi/spi-mt65xx.c
 +++ b/drivers/spi/spi-mt65xx.c
 @@ -15,7 +15,6 @@
@@ -99,7 +99,7 @@ index 4b40985af1ea..2e0d94d3b929 100644
  	if (mdata->dev_comp->need_pad_sel && spi_get_csgpiod(spi, 0))
  		/* CS de-asserted, gpiolib will handle inversion */
  		gpiod_direction_output(spi_get_csgpiod(spi, 0), 0);
-@@ -1197,6 +1185,11 @@ static int mtk_spi_probe(struct platform_device *pdev)
+@@ -1196,6 +1184,11 @@ static int mtk_spi_probe(struct platform_device *pdev)
  	host->use_gpio_descriptors = true;
  
  	mdata = spi_controller_get_devdata(host);
@@ -113,7 +113,7 @@ index 4b40985af1ea..2e0d94d3b929 100644
  	if (mdata->dev_comp->enhance_timing)
 diff --git a/include/linux/platform_data/spi-mt65xx.h b/include/linux/platform_data/spi-mt65xx.h
 deleted file mode 100644
-index f0db674f07b8..000000000000
+index f0db674f07b8a..0000000000000
 --- a/include/linux/platform_data/spi-mt65xx.h
 +++ /dev/null
 @@ -1,17 +0,0 @@
@@ -135,5 +135,5 @@ index f0db674f07b8..000000000000
 -};
 -#endif
 -- 
-2.52.0
+2.55.0
 

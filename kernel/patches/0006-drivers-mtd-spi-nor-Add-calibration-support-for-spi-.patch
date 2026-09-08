@@ -1,7 +1,7 @@
-From 087f69be918bea68228015cfb2c40fb33a11baf2 Mon Sep 17 00:00:00 2001
+From d05efff1622558839f5909afd82694d89c226010 Mon Sep 17 00:00:00 2001
 From: "SkyLake.Huang" <skylake.huang@mediatek.com>
 Date: Thu, 23 Jun 2022 18:40:59 +0800
-Subject: [PATCH 06/26] drivers: mtd: spi-nor: Add calibration support for
+Subject: [PATCH 6/8] drivers: mtd: spi-nor: Add calibration support for
  spi-nor
 
 Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
@@ -11,10 +11,10 @@ Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
  2 files changed, 19 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/mtd/nand/spi/core.c b/drivers/mtd/nand/spi/core.c
-index a37ce1a6ec2b..a24cd39d97e7 100644
+index f10ccab4d761d..8f9274524c09a 100644
 --- a/drivers/mtd/nand/spi/core.c
 +++ b/drivers/mtd/nand/spi/core.c
-@@ -1308,7 +1308,10 @@ static int spinand_cal_read(void *priv, u32 *addr, int addrlen, u8 *buf, int rea
+@@ -1436,7 +1436,10 @@ static int spinand_cal_read(void *priv, u32 *addr, int addrlen, u8 *buf, int rea
  	if (ret)
  		return ret;
  
@@ -27,10 +27,10 @@ index a37ce1a6ec2b..a24cd39d97e7 100644
  		return ret;
  
 diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
-index 20ea80450f22..f0a537ee02ed 100644
+index ccf4396cdcd04..228a1a3741eab 100644
 --- a/drivers/mtd/spi-nor/core.c
 +++ b/drivers/mtd/spi-nor/core.c
-@@ -3410,6 +3410,18 @@ static const struct flash_info *spi_nor_match_name(struct spi_nor *nor,
+@@ -3490,6 +3490,18 @@ static const struct flash_info *spi_nor_match_name(struct spi_nor *nor,
  	return NULL;
  }
  
@@ -49,7 +49,7 @@ index 20ea80450f22..f0a537ee02ed 100644
  static const struct flash_info *spi_nor_get_flash_info(struct spi_nor *nor,
  						       const char *name)
  {
-@@ -3584,6 +3596,9 @@ int spi_nor_scan(struct spi_nor *nor, const char *name,
+@@ -3664,6 +3676,9 @@ int spi_nor_scan(struct spi_nor *nor, const char *name,
  	if (ret)
  		return ret;
  
@@ -60,5 +60,5 @@ index 20ea80450f22..f0a537ee02ed 100644
  	if (IS_ERR(info))
  		return PTR_ERR(info);
 -- 
-2.52.0
+2.55.0
 

@@ -1,7 +1,7 @@
-From 75b6baf540ebe8818376dcbe022ce5e0f495b164 Mon Sep 17 00:00:00 2001
+From 522fd310581be26de8f09dce1f85b4e486459bf3 Mon Sep 17 00:00:00 2001
 From: "SkyLake.Huang" <skylake.huang@mediatek.com>
 Date: Thu, 23 Jun 2022 18:39:03 +0800
-Subject: [PATCH 04/26] drivers: spi-mt65xx: Add controller's calibration
+Subject: [PATCH 4/8] drivers: spi-mt65xx: Add controller's calibration
  paramter
 
 Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
@@ -10,7 +10,7 @@ Signed-off-by: SkyLake.Huang <skylake.huang@mediatek.com>
  1 file changed, 16 insertions(+)
 
 diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 2e0d94d3b929..fd0846b8572e 100644
+index 062db4c874a55..58e53aee7fda8 100644
 --- a/drivers/spi/spi-mt65xx.c
 +++ b/drivers/spi/spi-mt65xx.c
 @@ -888,6 +888,21 @@ static irqreturn_t mtk_spi_interrupt(int irq, void *dev_id)
@@ -35,7 +35,7 @@ index 2e0d94d3b929..fd0846b8572e 100644
  static int mtk_spi_mem_adjust_op_size(struct spi_mem *mem,
  				      struct spi_mem_op *op)
  {
-@@ -1183,6 +1198,7 @@ static int mtk_spi_probe(struct platform_device *pdev)
+@@ -1182,6 +1197,7 @@ static int mtk_spi_probe(struct platform_device *pdev)
  	host->setup = mtk_spi_setup;
  	host->set_cs_timing = mtk_spi_set_hw_cs_timing;
  	host->use_gpio_descriptors = true;
@@ -44,5 +44,5 @@ index 2e0d94d3b929..fd0846b8572e 100644
  	mdata = spi_controller_get_devdata(host);
  
 -- 
-2.52.0
+2.55.0
 
