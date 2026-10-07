@@ -12,6 +12,8 @@ stdenv.mkDerivation (finalAttrs: {
 
   makeFlags = [ "PREFIX=$(out)" ];
 
+  env.NIX_CFLAGS_COMPILE = "-Wno-error=unused-but-set-variable";
+
   preInstall = ''
     mkdir -p $out/bin
   '';
