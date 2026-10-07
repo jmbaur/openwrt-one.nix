@@ -16,7 +16,10 @@
         }
       )
       (final: _: {
-        openwrtOneAtfRam = final.openwrtOneAtf.override { bootDevice = "ram"; };
+        openwrtOneAtfRam = final.openwrtOneAtf.override {
+          bootDevice = "ram";
+          openwrtOneUBoot = final.openwrtOneUBoot.override { ramBoot = true; };
+        };
       })
     ];
 
@@ -28,7 +31,22 @@
       }
     );
 
-    mixosConfigurations.one = inputs.mixos.lib.mixosSystem {
+    devShells.x86_64-linux.default =
+      let
+        pkgs = inputs.self.legacyPackages.x86_64-linux;
+      in
+      pkgs.mkShell {
+        packages = [
+          (pkgs.python3.withPackages (ps: [
+            ps.pexpect
+            ps.pyserial
+            ps.xmodem
+          ]))
+          pkgs.mtk-uartboot
+        ];
+      };
+
+    mixosConfigurations.example = inputs.mixos.lib.mixosSystem {
       modules = [
         inputs.self.mixosModules.default
         (
@@ -77,10 +95,10 @@
               id = 0;
             };
 
-            init.hostapd = {
-              action = "respawn";
-              process = "${lib.getExe' pkgs.hostapd "hostapd"} ${./hostapd.conf}";
-            };
+            services.hostapd.run = pkgs.writeScript "hostapd-run" ''
+              #!/bin/sh
+              exec ${lib.getExe' pkgs.hostapd "hostapd"} ${./hostapd-2ghz.conf} ${./hostapd-5ghz.conf}
+            '';
           }
         )
       ];

@@ -101,6 +101,19 @@ in
         ''
     ) { };
 
+    # Everything openwrt-one-bootstrap needs: the RAM-boot BL2 and FIP that
+    # mtk_uartboot loads, and the images it flashes to the NAND.
+    system.build.bootstrapImages =
+      pkgs.runCommand "openwrt-one-bootstrap-images.tar" { }
+        ''
+          mkdir ram nand
+          cp ${pkgs.openwrtOneAtfRam}/{bl2.bin,fip.bin} ram/
+          cp ${config.system.build.firmware}/{bl2.img,fip.bin} nand/
+          cp ${config.system.build.ubiImage}/ubi.img nand/
+          tar --sort=name --owner=0 --group=0 --numeric-owner --mtime=@0 \
+            --mode=u+rw,go+r -cf $out ram nand
+        '';
+
     system.build.firmware = pkgs.symlinkJoin {
       name = "openwrt-one-firmware";
       paths = [

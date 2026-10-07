@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openwrt-one-bootstrap"
+version = "0.1.0"
+description = "Flash an OpenWrt One's SPI-NAND over its serial console"
+requires-python = ">=3.10"
+dependencies = ["pexpect", "pyserial", "xmodem"]
+
+[project.scripts]
+openwrt-one-bootstrap = "openwrt_one_bootstrap:main"
+
+[tool.setuptools]
+py-modules = ["openwrt_one_bootstrap"]
