@@ -335,12 +335,7 @@ def bootstrap(args, images):
     for name, path in IMAGES.items():
         flash(console, name, os.path.join(images, path), load)
 
-    log("Done, resetting the board")
-    console.send(b"reset\r")
-    console.ser.flush()
-    # Closing the port right away drops DTR, and the board's USB-serial bridge
-    # can discard the command before it reaches U-Boot.
-    time.sleep(1)
+    log("Done, power-cycle the board to boot the new images")
 
 
 def main():
