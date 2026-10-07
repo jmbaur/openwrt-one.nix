@@ -337,7 +337,10 @@ def bootstrap(args, images):
 
     log("Done, resetting the board")
     console.send(b"reset\r")
-    console.ser.flush()  # make sure it's sent before we exit
+    console.ser.flush()
+    # Closing the port right away drops DTR, and the board's USB-serial bridge
+    # can discard the command before it reaches U-Boot.
+    time.sleep(1)
 
 
 def main():
